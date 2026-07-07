@@ -1,0 +1,20 @@
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Java / Gradle
+build/
+.gradle/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
