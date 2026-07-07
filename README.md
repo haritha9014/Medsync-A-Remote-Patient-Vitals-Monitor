@@ -170,3 +170,10 @@ Example Request
 
 ```json
 {
+"patientId" : "P001",
+"heartRate" : 72,
+"bloodPressure" : "120/80",
+"temperature" : 36.5,
+"timestamp" : "2026-04-05T10:30:00Z"
+"status" : "NORMAL"
+}
