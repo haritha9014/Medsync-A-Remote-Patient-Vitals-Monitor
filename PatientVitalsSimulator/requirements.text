@@ -1,0 +1,76 @@
+"""
+MedSync Patient Vitals Simulator
+
+Main Application entry point.
+
+Generates patient telemetry and sends it
+to the Clinical Data Processor at fixed intervals.
+"""
+
+import random
+import time
+
+from config import PATIENT_IDS
+from config import TRANSMISSION_INTERVAL
+
+from generator import generate_vitals
+from transmitter import send_vitals
+from vitals_repository import save_vitals
+
+
+def start_simulation():
+    """
+    Start continuous telemetry generation
+    and transmission process.
+    """
+
+    print("\n====================================")
+    print(" MedSync Patient Simulator Started ")
+    print("====================================\n")
+
+    while True:
+
+        # Select a random patient
+        patient_id = random.choice(
+            PATIENT_IDS
+        )
+
+        # Generate telemetry data
+        payload = generate_vitals(
+            patient_id
+        )
+
+        print(
+            "\nGenerated Telemetry:"
+        )
+        print(payload)
+
+        # Save telemetry to MySQL database
+        save_vitals(payload)
+
+        print(
+            "[DATABASE] Telemetry saved successfully."
+        )
+
+        # Send telemetry to backend
+        send_vitals(payload)
+
+        # Wait before next transmission
+        time.sleep(
+            TRANSMISSION_INTERVAL
+        )
+
+
+if __name__ == "__main__":
+    try:
+        start_simulation()
+
+    except KeyboardInterrupt:
+        print(
+            "\nSimulator stopped by user."
+        )
+
+    except Exception as error:
+        print(
+            f"\nUnexpected Error: {error}"
+        )

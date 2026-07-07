@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedSync Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>🏥 MedSync</h2>
+
+    <a href="#">📊 Dashboard</a>
+    <a href="#">👥 Patients</a>
+    <a href="#">🚨 Alerts</a>
+    <a href="#">📄 Reports</a>
+    <a href="#">⚙ Settings</a>
+</div>
+
+<div class="main">
+
+    <div class="header">
+        <h1>Remote Patient Monitoring Dashboard</h1>
+        <p>Real-Time Healthcare Monitoring System</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card total">
+            <h3>Total Patients</h3>
+            <h1 id="totalCount">0</h1>
+        </div>
+
+        <div class="card critical">
+            <h3>Critical Alerts</h3>
+            <h1 id="criticalCount">0</h1>
+        </div>
+
+        <div class="card heart">
+            <h3>Avg Heart Rate</h3>
+            <h1 id="avgHeartRate">0</h1>
+        </div>
+
+        <div class="card spo2">
+            <h3>Avg SpO₂</h3>
+            <h1 id="avgSpo2">0%</h1>
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <button onclick="loadVitals()">🔄 Refresh</button>
+        <button>🚨 Alerts</button>
+        <button>📊 Reports</button>
+        <button>📥 Export</button>
+
+    </div>
+
+    <input
+            type="text"
+            id="searchBox"
+            placeholder="🔍 Search Patient">
+
+    <table id="vitalsTable">
+
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Patient</th>
+            <th>Heart Rate</th>
+            <th>SpO₂</th>
+            <th>Temperature</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+
+        <tbody></tbody>
+
+    </table>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
