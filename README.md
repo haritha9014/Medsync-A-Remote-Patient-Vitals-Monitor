@@ -170,10 +170,231 @@ Example Request
 
 ```json
 {
-"patientId" : "P001",
-"heartRate" : 72,
-"bloodPressure" : "120/80",
-"temperature" : 36.5,
-"timestamp" : "2026-04-05T10:30:00Z"
-"status" : "NORMAL"
+  "patient_id": "P102",
+  "heart_rate": 82,
+  "spo2": 98,
+  "temperature": 98.7
 }
+```
+
+---
+
+# Clinical Threshold Rules
+
+| Parameter | Safe Range |
+|------------|------------|
+| Heart Rate | 60 – 100 bpm |
+| SpO₂ | ≥95% |
+| Temperature | 97°F – 99°F |
+
+---
+
+# Alert Conditions
+
+The system generates a **CRITICAL_ALERT** when:
+
+- Heart Rate < 60 bpm
+- Heart Rate > 100 bpm
+- SpO₂ < 95%
+
+Otherwise, the patient status is marked as:
+
+```
+NORMAL
+```
+
+---
+
+# Features
+
+### Clinical Data Processor
+
+- REST API
+- DTO Validation
+- Exception Handling
+- H2 Database Storage
+- Clinical Alert Detection
+- Layered Spring Boot Architecture
+- Patient History Management
+
+---
+
+### PatientVitalsSimulator
+
+- Random Patient Data Generator
+- IoT Device Simulation
+- Continuous Telemetry Streaming
+- REST Client Integration
+- Critical Patient Simulation
+
+---
+
+# Workflow
+
+1. Start Spring Boot Application.
+2. Start PatientVitalsSimulator.
+3. Simulator generates patient vitals.
+4. JSON data is sent to Java Backend.
+5. Backend validates incoming data.
+6. Patient vitals are stored.
+7. Threshold rules are evaluated.
+8. Alert status is generated.
+9. Records become available for clinical review.
+
+---
+
+# Sample Alert Response
+
+```json
+{
+    "patient_id":"P102",
+    "heart_rate":120,
+    "spo2":92,
+    "temperature":99.5,
+    "status":"CRITICAL_ALERT"
+}
+```
+
+---
+
+# How to Run
+
+## Step 1
+
+Clone Repository
+
+```bash
+git clone https://github.com/haritha9014/Medsync-A-Remote-Patient-Vitals-Monitor.git
+```
+
+---
+
+## Step 2
+
+Open **Clinical Data Processor** in IntelliJ IDEA.
+
+Run
+
+```
+ClinicalDataProcessorApplication.java
+```
+
+---
+
+## Step 3
+
+Install Python dependency
+
+```bash
+pip install requests
+```
+
+---
+
+## Step 4
+
+Run
+
+```
+PatientVitalsSimulator/vitals_simulator.py
+```
+
+---
+
+## Step 5
+
+Simulator sends patient telemetry to
+
+```
+http://localhost:8080/api/vitals
+```
+
+---
+
+# Expected Output
+
+- Patient vitals received successfully.
+- Data stored in H2 Database.
+- Alert generated for abnormal values.
+- Normal records stored safely.
+
+---
+
+# Learning Outcomes
+
+This project demonstrates practical knowledge of:
+
+- Java Spring Boot
+- REST API Development
+- Python Programming
+- Service Integration
+- JSON Communication
+- Database Management
+- Healthcare Monitoring Systems
+- Git & GitHub Version Control
+- Layered Architecture
+- Backend Application Development
+
+---
+
+# Future Enhancements
+
+- Docker Support
+- MySQL/PostgreSQL Integration
+- JWT Authentication
+- Email Notifications
+- SMS Alerts
+- Live Monitoring Dashboard
+- Kafka Event Streaming
+- Cloud Deployment
+- Grafana Monitoring
+- Prometheus Metrics
+
+---
+
+# Contributors
+
+### Haritha
+
+**Clinical Data Processor**
+
+- Spring Boot Backend
+- REST APIs
+- Validation
+- Database
+- Alert Processing
+
+---
+
+### Teju
+
+**PatientVitalsSimulator**
+
+- Python Simulator
+- IoT Data Generation
+- REST Client
+- Patient Telemetry
+
+---
+
+# License
+
+This project is developed for academic learning and demonstration purposes.
+
+---
+
+## Project Status
+
+**Completed Successfully**
+
+Java Spring Boot ✔
+
+Python Integration ✔
+
+REST APIs ✔
+
+Database ✔
+
+GitHub ✔
+
+Healthcare Monitoring Workflow ✔
